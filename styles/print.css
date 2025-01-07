@@ -1,0 +1,128 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  line-height: 1.3;
+}
+
+html {
+  --serif: "Times New Roman", serif;
+  --mono: "Cascadia Code", monospace;
+  font-family: var(--serif);
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+body {
+  color: black;
+  fill: black;
+  background: white;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+    cc  Course Code
+    cn  Course Name
+
+    tn  Teacher Name
+    tc  Teacher Short Code
+    td  Teacher Designation
+
+    ah  Assignment Heading
+    at  Assignment Topic
+
+    sn  Student Name
+    sc  Student Code
+    sb  Student Batch
+    ss  Student Section
+
+    sd  Submission Date
+
+    dn  Department Name
+    un  University Name
+*/
+content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+content div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+content table {
+  width: 70%;
+  margin: 0 auto;
+}
+content table thead {
+  display: none;
+}
+content table td {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  height: 5rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+content span {
+  text-align: center;
+  /* Margins */
+}
+content span[name=cc], content span[name=cn], content span[name=ah] {
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+content span[name=cc]::after {
+  content: ":";
+  padding-right: 0.8rem;
+}
+content span[name=tn], content span[name=tc], content span[name=td], content span[name=at], content span[name=sn], content span[name=sc], content span[name=sb], content span[name=ss], content span[name=sd], content span[name=dn], content span[name=un] {
+  font-size: 1.5rem;
+}
+content span[name=tc]::before {
+  content: "(";
+  padding-left: 0.5rem;
+}
+content span[name=tc]::after {
+  content: ")";
+}
+content span[name=sn] {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+content span[name=sc]::before {
+  content: "Student Code:";
+  padding-right: 0.5rem;
+}
+content span[name=sb]::before {
+  content: "Batch:";
+  padding-right: 0.5rem;
+}
+content span[name=sb]::after {
+  content: ",";
+  padding-right: 0.5rem;
+}
+content span[name=ss]::before {
+  content: "Section:";
+  padding-right: 0.5rem;
+}
+content span[name=sd]::before {
+  content: "Date of Submission:";
+  padding-right: 0.5rem;
+}
+content span[name=ah], content span[name=sn] {
+  margin-top: 8rem;
+}
+content span[name=sd] {
+  margin: 5rem 0;
+}/*# sourceMappingURL=print.css.map */
