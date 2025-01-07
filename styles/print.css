@@ -101,7 +101,7 @@ content span[name=sn] {
   font-weight: 700;
 }
 content span[name=sc]::before {
-  content: "Student Code:";
+  content: "ID:";
   padding-right: 0.5rem;
 }
 content span[name=sb]::before {
