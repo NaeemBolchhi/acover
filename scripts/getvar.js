@@ -11,6 +11,7 @@
 
     sn  Student Name
     sc  Student Code
+    si  Student ID No.
     sb  Student Batch
     ss  Student Section
 
@@ -43,4 +44,39 @@ function fillGaps() {
     }
 }
 
+function setCodeID() {
+    if (typeof getVar(window.location.href).sc == 'undefined' && typeof getVar(window.location.href).si == 'undefined') {
+        return;
+    }
+
+    let swapT = document.querySelector('#swaptarget');
+
+    if (typeof getVar(window.location.href).sc !== 'undefined') {
+        swapT.setAttribute('placeholder', 'Student Code');
+        swapT.setAttribute('name', 'sc');
+        sessionStorage.swapMemory = 'sc';
+    } else if (typeof getVar(window.location.href).si !== 'undefined') {
+        swapT.setAttribute('placeholder', 'Student ID No.');
+        swapT.setAttribute('name', 'si');
+        sessionStorage.swapMemory = 'si';
+    }
+
+    swapT.removeAttribute('id');
+    document.querySelector('#swap').remove();
+}
+
+function hideBlankCodeID() {
+    if (typeof getVar(window.location.href).sc == 'undefined' && typeof getVar(window.location.href).si == 'undefined') {
+        return;
+    }
+
+    if (typeof getVar(window.location.href).sc == 'undefined') {
+        document.querySelector('span[name="sc"]').classList.add('none');
+    } else if (typeof getVar(window.location.href).si == 'undefined') {
+        document.querySelector('span[name="si"]').classList.add('none');
+    }
+}
+
+try {setCodeID();} catch {}
+try {hideBlankCodeID();} catch {}
 fillGaps();

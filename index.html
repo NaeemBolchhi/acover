@@ -45,7 +45,7 @@
 </head>
 <body>
     <content>
-        <span onclick="window.location.assign(window.location.origin)">ACover</span>
+        <span id="logo">ACover</span>
         <form action="print.html">
             <div>
                 <input required="" type="text" name="cc" placeholder="Course Code">
@@ -62,7 +62,10 @@
             </div>
             <div>
                 <input required="" type="text" name="sn" placeholder="Student Name">
-                <input required="" type="text" name="sc" placeholder="Student Code">
+                <div>
+                    <span id="swap">Code</span>
+                    <input id="swaptarget" required="" type="text" name="sc" placeholder="Student Code">
+                </div>
                 <input required="" type="text" name="sb" placeholder="Student Batch">
                 <input required="" type="text" name="ss" placeholder="Course Section">
             </div>
@@ -77,5 +80,6 @@
         </form>
     </content>
     <script type="text/javascript" src="scripts/getvar.min.js"></script>
+    <script type="text/javascript" src="scripts/home.min.js"></script>
 </body>
 </html>

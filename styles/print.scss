@@ -1,3 +1,11 @@
+.no-select {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
 body,
 html {
     height: 100%;
@@ -103,7 +111,11 @@ content {
             font-weight: 700;
         }
         &[name="sc"]::before {
-            content: 'ID:';
+            content: 'Code:';
+            padding-right: .5rem;
+        }
+        &[name="si"]::before {
+            content: 'ID No.:';
             padding-right: .5rem;
         }
         &[name="sb"] {
@@ -131,5 +143,31 @@ content {
         &[name="sd"] {
             margin: 5rem 0;
         }
+        /* Display */
+        &.none {
+            display: none;
+        }
+    }
+}
+
+#print {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    background: #0ea5e9;
+    color: #f8fafc;
+    font-family: 'Cascadia Code', monospace;
+    padding: 2rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 0 #ffffff0d, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    &:hover, &:focus {
+        background: #38bdf8;
+    }
+    &:active {
+        transform: translateY(3px);
+    }
+    @media print {
+        display: none;
     }
 }

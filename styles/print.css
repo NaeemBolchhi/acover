@@ -1,3 +1,10 @@
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 body,
 html {
   height: 100%;
@@ -77,6 +84,7 @@ content table td {
 content span {
   text-align: center;
   /* Margins */
+  /* Display */
 }
 content span[name=cc], content span[name=cn], content span[name=ah] {
   font-weight: 700;
@@ -101,7 +109,11 @@ content span[name=sn] {
   font-weight: 700;
 }
 content span[name=sc]::before {
-  content: "ID:";
+  content: "Code:";
+  padding-right: 0.5rem;
+}
+content span[name=si]::before {
+  content: "ID No.:";
   padding-right: 0.5rem;
 }
 content span[name=sb]::before {
@@ -125,4 +137,31 @@ content span[name=ah], content span[name=sn] {
 }
 content span[name=sd] {
   margin: 5rem 0;
+}
+content span.none {
+  display: none;
+}
+
+#print {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  background: #0ea5e9;
+  color: #f8fafc;
+  font-family: "Cascadia Code", monospace;
+  padding: 2rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#print:hover, #print:focus {
+  background: #38bdf8;
+}
+#print:active {
+  transform: translateY(3px);
+}
+@media print {
+  #print {
+    display: none;
+  }
 }/*# sourceMappingURL=print.css.map */
