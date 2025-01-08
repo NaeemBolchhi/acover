@@ -1,5 +1,5 @@
 document.querySelector('#logo').addEventListener('click', () => {
-    window.location.assign(window.location.origin);
+    window.location.assign(window.location.origin + '/acover/');
 });
 
 document.querySelector('#swap').addEventListener('click', () => {
