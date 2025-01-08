@@ -54,11 +54,11 @@ function setCodeID() {
     if (typeof getVar(window.location.href).sc !== 'undefined') {
         swapT.setAttribute('placeholder', 'Student Code');
         swapT.setAttribute('name', 'sc');
-        sessionStorage.swapMemory = 'sc';
+        localStorage.swapMemory = 'sc';
     } else if (typeof getVar(window.location.href).si !== 'undefined') {
         swapT.setAttribute('placeholder', 'Student ID No.');
         swapT.setAttribute('name', 'si');
-        sessionStorage.swapMemory = 'si';
+        localStorage.swapMemory = 'si';
     }
 
     swapT.removeAttribute('id');

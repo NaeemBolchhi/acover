@@ -1,6 +1,6 @@
 function getHome() {
     if (window.location.search === "" || !window.location.href.match(/\?/)) {
-        window.location.assign(window.location.origin);
+        window.location.assign(window.location.origin + '/acover/');
     }
 }
 

@@ -10,24 +10,24 @@ document.querySelector('#swap').addEventListener('click', () => {
         swap.textContent = 'ID No.';
         swapT.setAttribute('placeholder','Student ID No.');
         swapT.setAttribute('name','si');
-        sessionStorage.swapMemory = 'si';
+        localStorage.swapMemory = 'si';
     } else {
         swap.textContent = 'Code';
         swapT.setAttribute('placeholder','Student Code');
         swapT.setAttribute('name','sc');
-        sessionStorage.swapMemory = 'sc';
+        localStorage.swapMemory = 'sc';
     }
 });
 
 function getCodeMemory() {
-    if (sessionStorage.swapMemory == 'si') {
+    if (localStorage.swapMemory == 'si') {
         swap.textContent = 'ID No.';
         swapT.setAttribute('placeholder','Student ID No.');
         swapT.setAttribute('name','si');
-    } else if (sessionStorage.swapMemory == 'sc') {
+    } else if (localStorage.swapMemory == 'sc') {
         swapT.setAttribute('placeholder','Student Code');
         swapT.setAttribute('name','sc');
-        sessionStorage.swapMemory = 'sc';
+        localStorage.swapMemory = 'sc';
     }
 }
 
