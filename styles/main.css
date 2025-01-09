@@ -130,6 +130,8 @@ content button:active {
   transform: translateY(3px);
 }
 content form {
+  width: 100%;
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,8 +152,27 @@ content form div {
   justify-content: center;
   gap: 1.25rem;
 }
+@media only screen and (max-width: 400px) {
+  content form div {
+    width: 100%;
+    flex-direction: column;
+  }
+  content form div > input[type=text] {
+    min-width: 100%;
+  }
+}
 content form div:has(> #swap) {
   gap: 0;
+  flex-wrap: nowrap;
+}
+@media only screen and (max-width: 400px) {
+  content form div:has(> #swap) {
+    flex-direction: row;
+  }
+  content form div:has(> #swap) > input[type=text] {
+    min-width: unset;
+    flex: 1 0 auto;
+  }
 }
 content form input[type=text] {
   font-family: var(--mono);
@@ -170,7 +191,8 @@ content form input[type=text]:hover, content form input[type=text]:focus {
 }
 @media only screen and (max-width: 400px) {
   content form input[type=text] {
-    width: 80svw;
+    width: 1px;
+    flex: 1 0 auto;
   }
 }
 content form #swap {

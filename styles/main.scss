@@ -129,6 +129,8 @@ content {
         }
     }
     form {
+        width: 100%;
+        padding: 0 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -145,8 +147,23 @@ content {
             align-items: center;
             justify-content: center;
             gap: 1.25rem;
+            @media only screen and (max-width: 400px) {
+                width: 100%;
+                flex-direction: column;
+                > input[type='text'] {
+                    min-width: 100%;
+                }
+            }
             &:has(> #swap) {
                 gap: 0;
+                flex-wrap: nowrap;
+                @media only screen and (max-width: 400px) {
+                    flex-direction: row;
+                    > input[type='text'] {
+                        min-width: unset;
+                        flex: 1 0 auto;
+                    }
+                }
             }
         }
         input[type='text'] {
@@ -164,7 +181,8 @@ content {
                 background: var(--background-2h);
             }
             @media only screen and (max-width: 400px) {
-                width: 80svw;
+                width: 1px;
+                flex: 1 0 auto;
             }
         }
         #swap {
