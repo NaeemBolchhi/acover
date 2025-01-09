@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -17,7 +21,6 @@ html {
   --mono: "Cascadia Code", monospace;
   font-family: var(--serif);
   font-size: 12px;
-  box-sizing: border-box;
 }
 
 body {
@@ -62,24 +65,29 @@ content {
   flex-direction: column;
   gap: 1.6rem;
 }
+@media only screen {
+  content {
+    max-height: 141.4285714286svw;
+    max-width: 70.7070707071svh;
+  }
+}
 content div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-content table {
-  width: 70%;
-  margin: 0 auto;
-}
-content table thead {
-  display: none;
-}
-content table td {
+content div.outline {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
-  height: 5rem;
-  padding: 0 2rem;
+  height: 1px;
+  min-height: 5rem;
+  padding: 2.5rem 2.5rem;
   text-align: center;
+  width: 70%;
+  max-width: 70%;
+}
+content div.outline:has(.none) {
+  display: none;
 }
 content span {
   text-align: center;
@@ -143,6 +151,9 @@ content span.none {
 }
 
 #print {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -150,7 +161,8 @@ content span.none {
   color: #f8fafc;
   font-family: "Cascadia Code", monospace;
   font-size: 1.2rem;
-  padding: 1.6rem;
+  height: 4.8rem;
+  padding: 0 1.6rem;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -165,4 +177,8 @@ content span.none {
   #print {
     display: none;
   }
+}
+
+.none {
+  display: none;
 }/*# sourceMappingURL=print.css.map */

@@ -2,6 +2,10 @@ document.querySelector('#logo').addEventListener('click', () => {
     window.location.assign(window.location.origin + '/acover/');
 });
 
+document.querySelector('#generate').addEventListener('click', () => {
+    document.querySelector('form > input[type="submit"]').click();
+});
+
 document.querySelector('#swap').addEventListener('click', () => {
     let swap = document.querySelector('#swap'),
         swapT = document.querySelector('#swaptarget');

@@ -38,7 +38,14 @@ function fillGaps() {
             if (fields[x].tagName.match(/input/i)) {
                 fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ');
             } else {
+                if (getVar(window.location.href)[fields[x].getAttribute('name')] === '') {
+                    fields[x].classList.add('none');
+                }
                 fields[x].textContent = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ');
+            }
+        } else {
+            if (!fields[x].tagName.match(/input/i)) {
+                fields[x].classList.add('none');
             }
         }
     }

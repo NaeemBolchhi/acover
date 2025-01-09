@@ -63,6 +63,8 @@ html, html.darkmode {
   --main-text: #f8fafc;
   --accent: #0ea5e9;
   --accent-h: #38bdf8;
+  --accent-alt: #6467f2;
+  --accent-alt-h: #8284f7;
 }
 
 body {
@@ -89,49 +91,18 @@ input {
 content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
+  gap: 2.5rem;
   height: 100%;
   width: 100%;
 }
-content > span {
-  font-family: var(--serif);
-  font-size: 6rem;
-  font-weight: 700;
-  position: fixed;
-  top: 5rem;
-  cursor: pointer;
-}
-content > span:hover, content > span:focus {
-  color: var(--accent);
-}
-content > span:active {
-  transform: scale(0.9);
-}
-content button {
-  background: var(--accent);
-  border: 0;
-  height: 5rem;
-  padding: 0 2rem;
-  position: fixed;
-  bottom: 5rem;
-  border-radius: 6px;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
-  cursor: pointer;
-  color: var(--main-text);
-  font-size: 1.6rem;
-  font-family: var(--mono);
-  font-weight: 700;
-}
-content button:hover, content button:focus {
-  background: var(--accent-h);
-}
-content button:active {
-  transform: translateY(3px);
+content input[type=submit] {
+  display: none;
 }
 content form {
-  width: 100%;
   padding: 0 2.5rem;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +111,8 @@ content form {
 }
 @media only screen and (max-width: 480px) {
   content form {
-    height: calc(100svh - 30rem);
+    gap: 2.5rem;
+    height: calc(100svh - 8.5rem - 12.5rem - 5rem);
     justify-content: flex-start;
     overflow: auto;
   }
@@ -161,17 +133,26 @@ content form div {
     min-width: 100%;
   }
 }
-content form div:has(> #swap) {
+content form div:not(.combo) {
+  width: 100%;
+}
+content form div.combo {
+  flex: 1 0 auto;
+  min-width: 18rem;
+  max-width: 36rem;
   gap: 0;
   flex-wrap: nowrap;
+  flex-direction: row-reverse;
 }
 @media only screen and (max-width: 480px) {
-  content form div:has(> #swap) {
-    flex-direction: row-reverse;
-  }
-  content form div:has(> #swap) > input[type=text] {
+  content form div.combo > input[type=text] {
     min-width: unset;
     flex: 1 0 auto;
+  }
+}
+@media only screen and (max-width: 480px) {
+  content form div.combo {
+    max-width: unset;
   }
 }
 content form input[type=text] {
@@ -185,15 +166,25 @@ content form input[type=text] {
   padding: 0 1.5rem;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
   border-radius: 6px;
+  width: 1px;
+  flex: 1 0 auto;
+  min-width: 18rem;
+  max-width: 36rem;
+  border-left: 3px solid transparent;
 }
 content form input[type=text]:hover, content form input[type=text]:focus {
   background: var(--background-2h);
 }
 @media only screen and (max-width: 480px) {
   content form input[type=text] {
-    width: 1px;
-    flex: 1 0 auto;
+    max-width: unset;
   }
+}
+content form input[type=text][required] {
+  border-color: var(--accent);
+}
+content form input[type=text]:not([required]) {
+  border-color: transparent;
 }
 content form #swap {
   display: flex;
@@ -203,23 +194,96 @@ content form #swap {
   height: 4rem;
   background: var(--accent);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
-  border-radius: 6px 0 0 6px;
+  border-radius: 0 6px 6px 0;
   font-family: var(--mono);
-}
-@media only screen and (max-width: 480px) {
-  content form #swap {
-    border-radius: 0 6px 6px 0;
-  }
 }
 content form #swap:hover, content form #swap:focus {
   cursor: pointer;
   background: var(--accent-h);
 }
 content form #swaptarget {
-  border-radius: 0 6px 6px 0;
+  border-radius: 6px 0 0 6px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8.5rem;
+  padding: 2.5rem 2.5rem 0 2.5rem;
+  width: 100%;
+}
+header #logo {
+  display: flex;
+  font-family: var(--serif);
+  font-size: 5rem;
+  font-weight: 700;
+  cursor: pointer;
+  fill: var(--accent);
+}
+header #logo:hover, header #logo:focus {
+  fill: var(--accent-h);
+}
+header #logo:active {
+  transform: scale(0.9);
+}
+header #logo svg {
+  height: 1em;
+  width: auto;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 8rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2.5rem 2.5rem 2.5rem;
+  gap: 1.5rem;
 }
 @media only screen and (max-width: 480px) {
-  content form #swaptarget {
-    border-radius: 6px 0 0 6px;
+  footer {
+    height: 15rem;
   }
+}
+footer #generate, footer #share {
+  width: 1px;
+  max-width: 36rem;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  height: 5.5rem;
+  padding: 0 2rem;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
+  cursor: pointer;
+  color: var(--main-text);
+  font-size: 1.6rem;
+  font-family: var(--mono);
+  font-weight: 700;
+}
+footer #generate:active, footer #share:active {
+  transform: translateY(3px);
+}
+@media only screen and (max-width: 480px) {
+  footer #generate, footer #share {
+    max-width: unset;
+    width: 100%;
+  }
+}
+footer #generate {
+  background: var(--accent);
+}
+footer #generate:hover, footer #generate:focus {
+  background: var(--accent-h);
+}
+footer #share {
+  background: var(--accent-alt);
+}
+footer #share:hover, footer #share:focus {
+  background: var(--accent-alt-h);
 }/*# sourceMappingURL=main.css.map */
