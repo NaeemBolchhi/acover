@@ -1,6 +1,5 @@
-![ACover](https://github.com/user-attachments/assets/2a5478d8-a021-4930-b716-8fec80270a14)
+# ![ACover Logo](./app/72.png) ACover - Assignment Cover Page
 
-# ACover - Assignment Cover Page
 ACover lets you print (or save to PDF) cover pages for school, college, or university assignments.
 
 Spend your time on what really matters, and leave the covers to this tool. Also works on Android, so you can make cover page PDFs without even owning a computer.
