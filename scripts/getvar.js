@@ -37,6 +37,11 @@ function fillGaps() {
         if (typeof getVar(window.location.href)[fields[x].getAttribute('name')] !== 'undefined') {
             if (fields[x].tagName.match(/input/i)) {
                 fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ');
+                if (fields[x].value !== '') {
+                    fields[x].closest('i').classList.add('keepabove');
+                } else {
+                    fields[x].closest('i').classList.remove('keepabove');
+                }
             } else {
                 if (getVar(window.location.href)[fields[x].getAttribute('name')] === '') {
                     fields[x].classList.add('none');

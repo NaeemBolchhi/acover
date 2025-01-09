@@ -92,6 +92,14 @@ input {
     font-family: var(--mono);
 }
 
+label {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
 content {
     display: flex;
     align-items: center;
@@ -104,15 +112,15 @@ content {
         display: none;
     }
     form {
-        padding: 0 2.5rem;
+        padding: 2.5rem 2.5rem;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        gap: 3.75rem;
+        gap: 4.25rem;
         @media only screen and (max-width: 480px) {
-            gap: 2.5rem;
+            gap: 3.75rem;
             height: calc(100svh - 8.5rem - 12.5rem - 5rem);
             justify-content: flex-start;
             overflow: auto;
@@ -122,11 +130,11 @@ content {
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 2.75rem;
             @media only screen and (max-width: 480px) {
                 width: 100%;
                 flex-direction: column;
-                > input[type='text'] {
+                > i:has(> input[type='text']) {
                     min-width: 100%;
                 }
             }
@@ -141,7 +149,7 @@ content {
                 flex-wrap: nowrap;
                 flex-direction: row-reverse;
                 @media only screen and (max-width: 480px) {
-                    > input[type='text'] {
+                    > i:has(> input[type='text']) {
                         min-width: unset;
                         flex: 1 0 auto;
                     }
@@ -151,7 +159,36 @@ content {
                 }
             }
         }
-        input[type='text'] {
+        i:has(> input[type='text']) {
+            font-style: normal;
+            position: relative;
+            input[type='text'] {
+                height: 100%;
+                width: 100%;
+                border: 0;
+                color: inherit;
+                background: transparent;
+            }
+            label {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                left: 0;
+                top: 0;
+                padding: 0 1.5rem;
+                opacity: .5;
+                cursor: text;
+            }
+            &:focus-within, &.keepabove {
+                label {
+                    height: unset;
+                    top: -2rem;
+                    font-size: 1.2rem;
+                    cursor: default;
+                }
+            }
             font-family: var(--mono);
             font-size: 1.6rem;
             background: transparent;
@@ -195,7 +232,7 @@ content {
                 background: var(--accent-h);
             }
         }
-        #swaptarget {
+        i:has(> #swaptarget) {
             border-radius: 6px 0 0 6px;
         }
     }

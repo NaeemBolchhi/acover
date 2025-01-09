@@ -99,8 +99,9 @@ content {
             padding-right: .8rem;
         }
         &[name="tn"], &[name="tc"], &[name="td"], &[name="at"],
-        &[name="sn"], &[name="sc"], &[name="sb"], &[name="ss"],
-        &[name="sd"], &[name="dn"], &[name="un"] {
+        &[name="sn"], &[name="sc"], &[name="si"], &[name="sr"],
+        &[name="sb"], &[name="ss"], &[name="sd"], &[name="dn"],
+        &[name="un"] {
             font-size: 1.5rem;
         }
         &[name="tc"] {
@@ -122,6 +123,10 @@ content {
         }
         &[name="si"]::before {
             content: 'ID No.:';
+            padding-right: .5rem;
+        }
+        &[name="sr"]::before {
+            content: 'Roll No.:';
             padding-right: .5rem;
         }
         &[name="sb"] {

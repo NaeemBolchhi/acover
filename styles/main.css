@@ -90,6 +90,13 @@ input {
   font-family: var(--mono);
 }
 
+label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 content {
   display: flex;
   align-items: center;
@@ -103,17 +110,17 @@ content input[type=submit] {
   display: none;
 }
 content form {
-  padding: 0 2.5rem;
+  padding: 2.5rem 2.5rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 3.75rem;
+  gap: 4.25rem;
 }
 @media only screen and (max-width: 480px) {
   content form {
-    gap: 2.5rem;
+    gap: 3.75rem;
     height: calc(100svh - 8.5rem - 12.5rem - 5rem);
     justify-content: flex-start;
     overflow: auto;
@@ -124,14 +131,14 @@ content form div {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 2.75rem;
 }
 @media only screen and (max-width: 480px) {
   content form div {
     width: 100%;
     flex-direction: column;
   }
-  content form div > input[type=text] {
+  content form div > i:has(> input[type=text]) {
     min-width: 100%;
   }
 }
@@ -147,7 +154,7 @@ content form div.combo {
   flex-direction: row-reverse;
 }
 @media only screen and (max-width: 480px) {
-  content form div.combo > input[type=text] {
+  content form div.combo > i:has(> input[type=text]) {
     min-width: unset;
     flex: 1 0 auto;
   }
@@ -157,7 +164,9 @@ content form div.combo {
     max-width: unset;
   }
 }
-content form input[type=text] {
+content form i:has(> input[type=text]) {
+  font-style: normal;
+  position: relative;
   font-family: var(--mono);
   font-size: 1.6rem;
   background: transparent;
@@ -174,18 +183,43 @@ content form input[type=text] {
   max-width: 36rem;
   border-left: 3px solid transparent;
 }
-content form input[type=text]:hover, content form input[type=text]:focus {
+content form i:has(> input[type=text]) input[type=text] {
+  height: 100%;
+  width: 100%;
+  border: 0;
+  color: inherit;
+  background: transparent;
+}
+content form i:has(> input[type=text]) label {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  left: 0;
+  top: 0;
+  padding: 0 1.5rem;
+  opacity: 0.5;
+  cursor: text;
+}
+content form i:has(> input[type=text]):focus-within label, content form i:has(> input[type=text]).keepabove label {
+  height: unset;
+  top: -2rem;
+  font-size: 1.2rem;
+  cursor: default;
+}
+content form i:has(> input[type=text]):hover, content form i:has(> input[type=text]):focus {
   background: var(--background-2h);
 }
 @media only screen and (max-width: 480px) {
-  content form input[type=text] {
+  content form i:has(> input[type=text]) {
     max-width: unset;
   }
 }
-content form input[type=text][required] {
+content form i:has(> input[type=text])[required] {
   border-color: var(--accent);
 }
-content form input[type=text]:not([required]) {
+content form i:has(> input[type=text]):not([required]) {
   border-color: transparent;
 }
 content form #swap {
@@ -203,7 +237,7 @@ content form #swap:hover, content form #swap:focus {
   cursor: pointer;
   background: var(--accent-h);
 }
-content form #swaptarget {
+content form i:has(> #swaptarget) {
   border-radius: 6px 0 0 6px;
 }
 

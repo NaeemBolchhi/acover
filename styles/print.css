@@ -102,7 +102,7 @@ content span[name=cc]::after {
   content: ":";
   padding-right: 0.8rem;
 }
-content span[name=tn], content span[name=tc], content span[name=td], content span[name=at], content span[name=sn], content span[name=sc], content span[name=sb], content span[name=ss], content span[name=sd], content span[name=dn], content span[name=un] {
+content span[name=tn], content span[name=tc], content span[name=td], content span[name=at], content span[name=sn], content span[name=sc], content span[name=si], content span[name=sr], content span[name=sb], content span[name=ss], content span[name=sd], content span[name=dn], content span[name=un] {
   font-size: 1.5rem;
 }
 content span[name=tc]::before {
@@ -122,6 +122,10 @@ content span[name=sc]::before {
 }
 content span[name=si]::before {
   content: "ID No.:";
+  padding-right: 0.5rem;
+}
+content span[name=sr]::before {
+  content: "Roll No.:";
   padding-right: 0.5rem;
 }
 content span[name=sb]::before {
