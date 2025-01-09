@@ -66,6 +66,8 @@ html {
         --accent-h: #38bdf8;
         --accent-alt: #6467f2;
         --accent-alt-h: #8284f7;
+        --success: #339933;
+        --failure: #bb3333;
     }
 }
 
@@ -271,9 +273,26 @@ footer {
         }
     }
     #share {
-        background: var(--accent-alt);
-        &:hover, &:focus {
-            background: var(--accent-alt-h);
+        &:not(.success):not(.failure) {
+            > .pass, > .fail {
+                display: none;
+            }
+            background: var(--accent-alt);
+            &:hover, &:focus {
+                background: var(--accent-alt-h);
+            }
+        }
+        &.success {
+            background: var(--success);
+            > .general, > .fail {
+                display: none;
+            }
+        }
+        &.failure {
+            background: var(--failure);
+            > .pass, > .general {
+                display: none;
+            }
         }
     }
 }

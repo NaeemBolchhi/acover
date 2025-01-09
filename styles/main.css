@@ -65,6 +65,8 @@ html, html.darkmode {
   --accent-h: #38bdf8;
   --accent-alt: #6467f2;
   --accent-alt-h: #8284f7;
+  --success: #339933;
+  --failure: #bb3333;
 }
 
 body {
@@ -281,9 +283,24 @@ footer #generate {
 footer #generate:hover, footer #generate:focus {
   background: var(--accent-h);
 }
-footer #share {
+footer #share:not(.success):not(.failure) {
   background: var(--accent-alt);
 }
-footer #share:hover, footer #share:focus {
+footer #share:not(.success):not(.failure) > .pass, footer #share:not(.success):not(.failure) > .fail {
+  display: none;
+}
+footer #share:not(.success):not(.failure):hover, footer #share:not(.success):not(.failure):focus {
   background: var(--accent-alt-h);
+}
+footer #share.success {
+  background: var(--success);
+}
+footer #share.success > .general, footer #share.success > .fail {
+  display: none;
+}
+footer #share.failure {
+  background: var(--failure);
+}
+footer #share.failure > .pass, footer #share.failure > .general {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
