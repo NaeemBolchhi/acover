@@ -1,4 +1,4 @@
-# ![ACover Logo](./app/72.png) ACover - Assignment Cover Page
+# ![ACover Logo](./app/72.png) ACover - Assignment Cover
 
 ACover lets you print (or save to PDF) cover pages for school, college, or university assignments.
 
