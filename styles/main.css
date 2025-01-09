@@ -138,7 +138,7 @@ content form {
   flex-direction: column;
   gap: 3.75rem;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   content form {
     height: calc(100svh - 30rem);
     justify-content: flex-start;
@@ -152,7 +152,7 @@ content form div {
   justify-content: center;
   gap: 1.25rem;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   content form div {
     width: 100%;
     flex-direction: column;
@@ -165,9 +165,9 @@ content form div:has(> #swap) {
   gap: 0;
   flex-wrap: nowrap;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   content form div:has(> #swap) {
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
   content form div:has(> #swap) > input[type=text] {
     min-width: unset;
@@ -189,7 +189,7 @@ content form input[type=text] {
 content form input[type=text]:hover, content form input[type=text]:focus {
   background: var(--background-2h);
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   content form input[type=text] {
     width: 1px;
     flex: 1 0 auto;
@@ -206,10 +206,20 @@ content form #swap {
   border-radius: 6px 0 0 6px;
   font-family: var(--mono);
 }
+@media only screen and (max-width: 480px) {
+  content form #swap {
+    border-radius: 0 6px 6px 0;
+  }
+}
 content form #swap:hover, content form #swap:focus {
   cursor: pointer;
   background: var(--accent-h);
 }
 content form #swaptarget {
   border-radius: 0 6px 6px 0;
+}
+@media only screen and (max-width: 480px) {
+  content form #swaptarget {
+    border-radius: 6px 0 0 6px;
+  }
 }/*# sourceMappingURL=main.css.map */
