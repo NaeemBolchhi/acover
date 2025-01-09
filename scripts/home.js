@@ -28,6 +28,10 @@ try {
             localStorage.swapMemory = 'sr';
             swapL.textContent = 'Student Roll No.';
         }
+
+        if (visualViewport.height < (window.innerHeight - 30)) {
+            swapT.focus();
+        }
     });
 
     function getCodeMemory() {
