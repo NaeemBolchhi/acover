@@ -100,8 +100,8 @@ content {
         }
         &[name="tn"], &[name="tc"], &[name="td"], &[name="at"],
         &[name="sn"], &[name="sc"], &[name="si"], &[name="sr"],
-        &[name="sb"], &[name="ss"], &[name="sd"], &[name="dn"],
-        &[name="un"] {
+        &[name="sb"], &[name="in"], &[name="ss"], &[name="sd"],
+        &[name="dn"], &[name="un"] {
             font-size: 1.5rem;
         }
         &[name="tc"] {
@@ -134,7 +134,15 @@ content {
                 content: 'Batch:';
                 padding-right: .5rem;
             }
-            &::after {
+        }
+        &[name="in"] {
+            &::before {
+                content: 'Intake:';
+                padding-right: .5rem;
+            }
+        }
+        &[name="sb"], &[name="in"] {
+            &:has(+ span[name="ss"]:not(.none))::after {
                 content: ',';
                 padding-right: .5rem;
             }

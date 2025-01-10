@@ -1,25 +1,5 @@
-/*
-    cc  Course Code
-    cn  Course Name
-
-    tn  Teacher Name
-    tc  Teacher Short Code
-    td  Teacher Designation
-
-    ah  Assignment Heading
-    at  Assignment Topic
-
-    sn  Student Name
-    sc  Student Code
-    si  Student ID No.
-    sb  Student Batch
-    ss  Student Section
-
-    sd  Submission Date
-
-    dn  Department Name
-    un  University Name
-*/
+// Set page identity
+window.dataPage = document.documentElement.getAttribute('data-page');
 
 // Get URL variables
 function getVar(link) {
@@ -36,7 +16,7 @@ function fillGaps() {
     for (let x = 0; x < fields.length; x++) {
         if (typeof getVar(window.location.href)[fields[x].getAttribute('name')] !== 'undefined') {
             if (fields[x].tagName.match(/input/i)) {
-                fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ');
+                fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ').replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
                 if (fields[x].value !== '') {
                     fields[x].closest('i').classList.add('keepabove');
                 } else {
@@ -46,7 +26,7 @@ function fillGaps() {
                 if (getVar(window.location.href)[fields[x].getAttribute('name')] === '') {
                     fields[x].classList.add('none');
                 }
-                fields[x].textContent = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ');
+                fields[x].textContent = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ').replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
             }
         } else {
             if (!fields[x].tagName.match(/input/i)) {
@@ -56,39 +36,57 @@ function fillGaps() {
     }
 }
 
-function setCodeID() {
-    if (typeof getVar(window.location.href).sc == 'undefined' && typeof getVar(window.location.href).si == 'undefined') {
+function setCodeIDRoll() {
+    if (typeof getVar(window.location.href).sc == 'undefined' && typeof getVar(window.location.href).si == 'undefined' && typeof getVar(window.location.href).sr == 'undefined') {
         return;
     }
 
-    let swapT = document.querySelector('#swaptarget');
+    let swapT = document.querySelector('#swaptarget1'),
+        swapL = swapT.closest('i').querySelector('label');
 
     if (typeof getVar(window.location.href).sc !== 'undefined') {
-        swapT.setAttribute('placeholder', 'Student Code');
+        swapL.textContent = 'Student Code';
         swapT.setAttribute('name', 'sc');
         localStorage.swapMemory = 'sc';
     } else if (typeof getVar(window.location.href).si !== 'undefined') {
-        swapT.setAttribute('placeholder', 'Student ID No.');
+        swapL.textContent = 'Student ID No.';
         swapT.setAttribute('name', 'si');
         localStorage.swapMemory = 'si';
+    } else if (typeof getVar(window.location.href).sr !== 'undefined') {
+        swapL.textContent = 'Student Roll No.';
+        swapT.setAttribute('name', 'sr');
+        localStorage.swapMemory = 'sr';
     }
 
     swapT.removeAttribute('id');
-    document.querySelector('#swap').remove();
+    document.querySelector('#swap1').remove();
 }
 
-function hideBlankCodeID() {
-    if (typeof getVar(window.location.href).sc == 'undefined' && typeof getVar(window.location.href).si == 'undefined') {
+function setBatchIntake() {
+    if (typeof getVar(window.location.href).sb == 'undefined' && typeof getVar(window.location.href).in == 'undefined') {
         return;
     }
 
-    if (typeof getVar(window.location.href).sc == 'undefined') {
-        document.querySelector('span[name="sc"]').classList.add('none');
-    } else if (typeof getVar(window.location.href).si == 'undefined') {
-        document.querySelector('span[name="si"]').classList.add('none');
+    let swapT = document.querySelector('#swaptarget2'),
+        swapL = swapT.closest('i').querySelector('label');
+
+    if (typeof getVar(window.location.href).sb !== 'undefined') {
+        swapL.textContent = 'Student Batch';
+        swapT.setAttribute('name', 'sb');
+        localStorage.swapMemory = 'sb';
+    } else if (typeof getVar(window.location.href).in !== 'undefined') {
+        swapL.textContent = 'Student Intake';
+        swapT.setAttribute('name', 'in');
+        localStorage.swapMemory = 'in';
     }
+
+    swapT.removeAttribute('id');
+    document.querySelector('#swap2').remove();
 }
 
-try {setCodeID();} catch {}
-try {hideBlankCodeID();} catch {}
+if (window.dataPage === 'home') {
+    setCodeIDRoll();
+    setBatchIntake();
+}
+
 fillGaps();

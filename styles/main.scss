@@ -163,11 +163,13 @@ content {
             font-style: normal;
             position: relative;
             input[type='text'] {
+                position: relative;
                 height: 100%;
                 width: 100%;
                 border: 0;
                 color: inherit;
                 background: transparent;
+                z-index: 1;
             }
             label {
                 position: absolute;
@@ -179,6 +181,7 @@ content {
                 top: 0;
                 padding: 0 1.5rem;
                 opacity: .5;
+                z-index: 0;
                 cursor: text;
             }
             &:focus-within, &.keepabove {
@@ -203,21 +206,18 @@ content {
             flex: 1 0 auto;
             min-width: 18rem;
             max-width: 36rem;
-            &:hover, &:focus {
+            &:has(input[type="text"]:hover), &:has(input[type="text"]:focus) {
                 background: var(--background-2h);
             }
             @media only screen and (max-width: 480px) {
                 max-width: unset;
             }
             border-left: 3px solid transparent;
-            &[required] {
+            &:has(input[required]) {
                 border-color: var(--accent);
             }
-            &:not([required]) {
-                border-color: transparent;
-            }
         }
-        #swap {
+        #swap1, #swap2 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -232,7 +232,7 @@ content {
                 background: var(--accent-h);
             }
         }
-        i:has(> #swaptarget) {
+        i:has(> #swaptarget1), i:has(> #swaptarget2) {
             border-radius: 6px 0 0 6px;
         }
     }

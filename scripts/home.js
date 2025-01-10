@@ -7,9 +7,23 @@ document.querySelector('#generate').addEventListener('click', () => {
 });
 
 try {
-    document.querySelector('#swap').addEventListener('click', () => {
-        let swap = document.querySelector('#swap'),
-            swapT = document.querySelector('#swaptarget'),
+    document.addEventListener('mousedown', (e) => {
+        if (e.target.closest('#swap1')) {
+            e.preventDefault();
+            window.mouseDownTarget = '#swap1';
+        } else if (e.target.closest('#swap2')) {
+            e.preventDefault();
+            window.mouseDownTarget = '#swap2';
+        } else {
+            window.mouseDownTarget = '';
+        }
+    });
+    document.querySelector('#swap1').addEventListener('mouseup', (e) => {
+        e.preventDefault();
+        if (window.mouseDownTarget !== '#swap1') {return;}
+
+        let swap = document.querySelector('#swap1'),
+            swapT = document.querySelector('#swaptarget1'),
             swapL = swapT.closest('i').querySelector('label');
     
         if (swap.textContent === 'Roll') {
@@ -28,15 +42,32 @@ try {
             localStorage.swapMemory = 'sr';
             swapL.textContent = 'Student Roll No.';
         }
+    });
 
-        if (visualViewport.height < (window.innerHeight - 30)) {
-            swapT.focus();
+    document.querySelector('#swap2').addEventListener('mouseup', (e) => {
+        e.preventDefault();
+        if (window.mouseDownTarget !== '#swap2') {return;}
+
+        let swap = document.querySelector('#swap2'),
+            swapT = document.querySelector('#swaptarget2'),
+            swapL = swapT.closest('i').querySelector('label');
+    
+        if (swap.textContent === 'Batch') {
+            swap.textContent = 'Intake';
+            swapT.setAttribute('name','in');
+            localStorage.swapMemory = 'in';
+            swapL.textContent = 'Student Intake';
+        } else if (swap.textContent === 'Intake') {
+            swap.textContent = 'Batch';
+            swapT.setAttribute('name','sb');
+            localStorage.swapMemory = 'sb';
+            swapL.textContent = 'Student Batch';
         }
     });
 
     function getCodeMemory() {
-        let swap = document.querySelector('#swap'),
-            swapT = document.querySelector('#swaptarget'),
+        let swap = document.querySelector('#swap1'),
+            swapT = document.querySelector('#swaptarget1'),
             swapL = swapT.closest('i').querySelector('label');
         if (localStorage.swapMemory == 'sr') {
             swap.textContent = 'Roll';
@@ -50,6 +81,19 @@ try {
             swap.textContent = 'Code';
             swapT.setAttribute('name','sc');
             swapL.textContent = 'Student Code';
+        }
+
+        swap = document.querySelector('#swap2');
+        swapT = document.querySelector('#swaptarget2');
+        swapL = swapT.closest('i').querySelector('label');
+        if (localStorage.swapMemory == 'in') {
+            swap.textContent = 'Intake';
+            swapT.setAttribute('name','in');
+            swapL.textContent = 'Student Intake';
+        } else if (localStorage.swapMemory == 'sb') {
+            swap.textContent = 'Batch';
+            swapT.setAttribute('name','sb');
+            swapL.textContent = 'Student Batch';
         }
     }
     
@@ -88,11 +132,11 @@ document.querySelector('#share').addEventListener('click', () => {
     copyString(string, document.querySelector('#share'));
 });
 
-document.addEventListener('click', (e) => {
-    if (!e.target.tagName.match(/label/i)) {return;}
+// document.addEventListener('click', (e) => {
+//     if (!e.target.tagName.match(/label/i)) {return;}
 
-    e.target.closest('i').querySelector('input').focus();
-});
+//     e.target.closest('i').querySelector('input').focus();
+// });
 
 function updateLabelPos() {
     let fields = document.querySelectorAll('input[name]');
