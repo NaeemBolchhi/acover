@@ -1,15 +1,13 @@
-$version: 20231007021730;
+$version: 20250012230616;
 $fontname: 'Cascadia Code';
 $fname: 'cascadiacode';
-$fdisplay: 'swap';
-$fstyle: 'normal';
 
 @mixin fontFace($fweight) {
   font-family: $fontname;
-  font-style: $fstyle;
+  font-style: 'normal';
   font-weight: $fweight;
   font-stretch: 100%;
-  font-display: $fdisplay;
+  font-display: 'swap';
   src: url('../fonts/'+$fname+'-'+$fweight+'.woff2?'+$version) format('woff2'),
        url('../fonts/'+$fname+'-'+$fweight+'.woff?'+$version) format('woff');
 }

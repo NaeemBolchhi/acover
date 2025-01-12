@@ -2,12 +2,13 @@
 
 ACover lets you print (or save to PDF) cover pages for school, college, or university assignments.
 
-Spend your time on what really matters, and leave the covers to this tool. Also works on Android, so you can make cover page PDFs without even owning a computer.
+Spend your time on what really matters, and leave the covers to this tool. Also works on Android/iOS, so you can make cover page PDFs without even owning a computer.
 
 ## Features
 - Just input data, forget formatting.
 - Intended for university students.
 - Works on Android via Chrome and Chromium browsers.
+- Works on iOS via Safari.
 
 ## Instructions
 - Open ACover on a supported browser.

@@ -18,7 +18,7 @@ html {
 }
 
 html {
-    --serif: 'Times New Roman', serif;
+    --serif: 'FreeSerifLinguist', 'Times New Roman', serif;
     --mono: 'Cascadia Code', monospace;
     font-family: var(--serif);
     font-size: 12px;
@@ -35,28 +35,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-/*
-    cc  Course Code
-    cn  Course Name
-
-    tn  Teacher Name
-    tc  Teacher Short Code
-    td  Teacher Designation
-
-    ah  Assignment Heading
-    at  Assignment Topic
-
-    sn  Student Name
-    sc  Student Code
-    sb  Student Batch
-    ss  Student Section
-
-    sd  Submission Date
-
-    dn  Department Name
-    un  University Name
-*/
 
 content {
     height: 100%;
@@ -141,7 +119,13 @@ content {
                 padding-right: .5rem;
             }
         }
-        &[name="sb"], &[name="in"] {
+        &[name="sb"] {
+            &:has(+ span + span[name="ss"]:not(.none))::after {
+                content: ',';
+                padding-right: .5rem;
+            }
+        }
+        &[name="in"] {
             &:has(+ span[name="ss"]:not(.none))::after {
                 content: ',';
                 padding-right: .5rem;

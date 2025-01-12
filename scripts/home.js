@@ -123,7 +123,7 @@ document.querySelector('#share').addEventListener('click', () => {
         string = window.location.origin + '/acover/?';
 
     for (let x = 0; x < fields.length; x++) {
-        string += fields[x].getAttribute('name') + '=' + fields[x].value;
+        string += fields[x].getAttribute('name') + '=' + encodeURIComponent(fields[x].value);
         if (x !== (fields.length - 1)) {
             string += '&';
         }
@@ -131,12 +131,6 @@ document.querySelector('#share').addEventListener('click', () => {
 
     copyString(string, document.querySelector('#share'));
 });
-
-// document.addEventListener('click', (e) => {
-//     if (!e.target.tagName.match(/label/i)) {return;}
-
-//     e.target.closest('i').querySelector('input').focus();
-// });
 
 function updateLabelPos() {
     let fields = document.querySelectorAll('input[name]');
