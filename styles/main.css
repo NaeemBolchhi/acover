@@ -30,7 +30,7 @@ html {
 }
 
 html {
-  --serif: "FreeSerifLinguist", "Times New Roman", serif;
+  --serif: "PT Serif", "Times New Roman", serif;
   --mono: "Cascadia Code", monospace;
   font-family: var(--serif);
   font-size: 10px;
