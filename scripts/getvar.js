@@ -50,9 +50,7 @@ function swapVarVis() {
 
     for (let x = 0; x < swapT.length; x++) {
         if (typeof getVar(window.location.href)[swapT[x].getAttribute('name')] !== 'undefined') {
-            swapT[x].closest('i').classList.add('visible');
-        } else {
-            swapT[x].closest('i').classList.remove('visible');
+            localStorage.setItem(swapT[x].closest('.swapper').getAttribute('data-id'), swapT[x].getAttribute('name'));
         }
     }
 }
