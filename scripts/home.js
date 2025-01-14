@@ -89,7 +89,7 @@ function copyString(text,elem) {
 
 document.querySelector('#share').addEventListener('click', () => {
     let fields = document.querySelectorAll('input[name]'),
-        string = window.location.origin + '/acover/?';
+        string = document.querySelector('head > link[rel="canonical"]').getAttribute('href') + '?';
 
     for (let x = 0; x < fields.length; x++) {
         string += fields[x].getAttribute('name') + '=' + encodeURIComponent(fields[x].value);
