@@ -241,9 +241,6 @@ content {
             }
             i:has(> .swaptarget) {
                 border-radius: 6px 0 0 6px;
-                &:not(.visible) {
-                    display: none;
-                }
             }
         }
     }

@@ -246,9 +246,6 @@ content form .swapper .swap:active > i {
 content form .swapper i:has(> .swaptarget) {
   border-radius: 6px 0 0 6px;
 }
-content form .swapper i:has(> .swaptarget):not(.visible) {
-  display: none;
-}
 
 header {
   display: flex;

@@ -67,16 +67,13 @@
             </div>
             <div>
                 <i><input required="" type="text" name="sn"><label>Student Name</label></i>
-                <div class="swapper" data-id="swap1">
+                <div class="swapper" data-id="swap1" data-swap='[{"n":"si","l":"Student ID No."},{"n":"sr","l":"Student Roll No."},{"n":"sc","l":"Student Code"}]'>
                     <span class="swap"><i class="fa fa-swap"></i></span>
-                    <i class="visible"><input class="swaptarget" required="" type="text" name="si"><label>Student ID No.</label></i>
-                    <i><input class="swaptarget" required="" type="text" name="sr"><label>Student Roll No.</label></i>
-                    <i><input class="swaptarget" required="" type="text" name="sc"><label>Student Code</label></i>
+                    <i><input class="swaptarget" required="" type="text" name="si"><label>Student ID No.</label></i>
                 </div>
-                <div class="swapper" data-id="swap2">
+                <div class="swapper" data-id="swap2" data-swap='[{"n":"sb","l":"Student Batch"},{"n":"in","l":"Student Intake"}]'>
                     <span class="swap"><i class="fa fa-swap"></i></span>
-                    <i class="visible"><input class="swaptarget" required="" type="text" name="sb"><label>Student Batch</label></i>
-                    <i><input class="swaptarget" required="" type="text" name="in"><label>Student Intake</label></i>
+                    <i><input class="swaptarget" required="" type="text" name="sb"><label>Student Batch</label></i>
                 </div>
                 <i><input type="text" name="ss"><label>Student Section</label></i>
             </div>
@@ -99,6 +96,6 @@
         </footer>
     </content>
     <script type="text/javascript" src="scripts/getvar.min.js"></script>
-    <script type="text/javascript" src="scripts/home.min.js"></script>
+    <script type="text/javascript" src="scripts/home.js"></script>
 </body>
 </html>

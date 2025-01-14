@@ -1,11 +1,6 @@
 // Set page identity
 window.dataPage = document.documentElement.getAttribute('data-page');
 
-// Set disabled
-if (localStorage.disableVar === undefined) {
-    localStorage.disableVar = 'true';
-}
-
 // Get URL variables
 function getVar(link) {
     let vars = {};
@@ -24,10 +19,6 @@ function fillGaps() {
                 fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ').replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
                 if (fields[x].value !== '') {
                     fields[x].closest('i').classList.add('keepabove');
-                    console.log(localStorage.getItem('disableVar') == 'true');
-                    if (localStorage.disableVar == 'true') {
-                        fields[x].setAttribute('disabled','true');
-                    }
                 } else {
                     fields[x].closest('i').classList.remove('keepabove');
                 }
@@ -46,11 +37,15 @@ function fillGaps() {
 }
 
 function swapVarVis() {
-    let swapT = document.querySelectorAll('.swaptarget');
+    let swappers = document.querySelectorAll('.swapper');
 
-    for (let x = 0; x < swapT.length; x++) {
-        if (typeof getVar(window.location.href)[swapT[x].getAttribute('name')] !== 'undefined') {
-            localStorage.setItem(swapT[x].closest('.swapper').getAttribute('data-id'), swapT[x].getAttribute('name'));
+    for (let x = 0; x < swappers.length; x++) {
+        let swapList = JSON.parse(swappers[x].getAttribute('data-swap'));
+
+        for (let y = 0; y < swapList.length; y++) {
+            if (typeof getVar(window.location.href)[swapList[y].n] !== 'undefined') {
+                localStorage.setItem(swappers[x].getAttribute('data-id'), y);
+            }
         }
     }
 }
