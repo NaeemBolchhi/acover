@@ -142,10 +142,10 @@ content form div {
     min-width: 100%;
   }
 }
-content form div:not(.combo) {
+content form div:not(.swapper) {
   width: 100%;
 }
-content form div.combo {
+content form div.swapper {
   flex: 1 0 auto;
   min-width: 18rem;
   max-width: 36rem;
@@ -154,13 +154,13 @@ content form div.combo {
   flex-direction: row-reverse;
 }
 @media only screen and (max-width: 480px) {
-  content form div.combo > i:has(> input[type=text]) {
+  content form div.swapper > i:has(> input[type=text]) {
     min-width: unset;
     flex: 1 0 auto;
   }
 }
 @media only screen and (max-width: 480px) {
-  content form div.combo {
+  content form div.swapper {
     max-width: unset;
   }
 }
@@ -222,7 +222,7 @@ content form i:has(> input[type=text]):has(input[type=text]:hover), content form
 content form i:has(> input[type=text]):has(input[required]) {
   border-color: var(--accent);
 }
-content form #swap1, content form #swap2 {
+content form .swapper .swap {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,12 +233,21 @@ content form #swap1, content form #swap2 {
   border-radius: 0 6px 6px 0;
   font-family: var(--mono);
 }
-content form #swap1:hover, content form #swap1:focus, content form #swap2:hover, content form #swap2:focus {
+content form .swapper .swap > i {
+  line-height: 1;
+}
+content form .swapper .swap:hover, content form .swapper .swap:focus {
   cursor: pointer;
   background: var(--accent-h);
 }
-content form i:has(> #swaptarget1), content form i:has(> #swaptarget2) {
+content form .swapper .swap:active > i {
+  transform: scale(0.65) !important;
+}
+content form .swapper i:has(> .swaptarget) {
   border-radius: 6px 0 0 6px;
+}
+content form .swapper i:has(> .swaptarget):not(.visible) {
+  display: none;
 }
 
 header {

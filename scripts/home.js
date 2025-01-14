@@ -1,104 +1,73 @@
-document.querySelector('#logo').addEventListener('click', () => {
-    window.location.assign(window.location.origin + '/acover/');
-});
-
 document.querySelector('#generate').addEventListener('click', () => {
     document.querySelector('form > input[type="submit"]').click();
 });
 
-try {
-    document.addEventListener('mousedown', (e) => {
-        if (e.target.closest('#swap1')) {
-            e.preventDefault();
-            window.mouseDownTarget = '#swap1';
-        } else if (e.target.closest('#swap2')) {
-            e.preventDefault();
-            window.mouseDownTarget = '#swap2';
-        } else {
-            window.mouseDownTarget = '';
-        }
-    });
-    document.querySelector('#swap1').addEventListener('mouseup', (e) => {
-        e.preventDefault();
-        if (window.mouseDownTarget !== '#swap1') {return;}
+document.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) {return;}
+    if (e.target.closest('.swap')) {
+        // e.preventDefault();
+        window.mouseDownTarget = e.target.closest('.swapper').getAttribute('data-id');
+    } else {
+        window.mouseDownTarget = '';
+    }
+});
 
-        let swap = document.querySelector('#swap1'),
-            swapT = document.querySelector('#swaptarget1'),
-            swapL = swapT.closest('i').querySelector('label');
-    
-        if (swap.textContent === 'Roll') {
-            swap.textContent = 'Code';
-            swapT.setAttribute('name','sc');
-            localStorage.swapMemory = 'sc';
-            swapL.textContent = 'Student Code';
-        } else if (swap.textContent === 'Code') {
-            swap.textContent = 'ID';
-            swapT.setAttribute('name','si');
-            localStorage.swapMemory = 'si';
-            swapL.textContent = 'Student ID No.';
-        } else if (swap.textContent === 'ID') {
-            swap.textContent = 'Roll';
-            swapT.setAttribute('name','sr');
-            localStorage.swapMemory = 'sr';
-            swapL.textContent = 'Student Roll No.';
-        }
-    });
+document.addEventListener('mouseup', (e) => {
+    if (e.button !== 0) {return;}
+    if (!e.target.closest('.swap')) {return;}
+    if (window.mouseDownTarget !== e.target.closest('.swapper').getAttribute('data-id')) {return;}
 
-    document.querySelector('#swap2').addEventListener('mouseup', (e) => {
-        e.preventDefault();
-        if (window.mouseDownTarget !== '#swap2') {return;}
+    let swapper = e.target.closest('.swapper'),
+        swapVis = swapper.querySelectorAll('i:has(>.swaptarget)'),
+        childNum = '';
 
-        let swap = document.querySelector('#swap2'),
-            swapT = document.querySelector('#swaptarget2'),
-            swapL = swapT.closest('i').querySelector('label');
-    
-        if (swap.textContent === 'Batch') {
-            swap.textContent = 'Intake';
-            swapT.setAttribute('name','in');
-            localStorage.swapMemory = 'in';
-            swapL.textContent = 'Student Intake';
-        } else if (swap.textContent === 'Intake') {
-            swap.textContent = 'Batch';
-            swapT.setAttribute('name','sb');
-            localStorage.swapMemory = 'sb';
-            swapL.textContent = 'Student Batch';
-        }
-    });
-
-    function getCodeMemory() {
-        let swap = document.querySelector('#swap1'),
-            swapT = document.querySelector('#swaptarget1'),
-            swapL = swapT.closest('i').querySelector('label');
-        if (localStorage.swapMemory == 'sr') {
-            swap.textContent = 'Roll';
-            swapT.setAttribute('name','sr');
-            swapL.textContent = 'Student Roll No.';
-        } else if (localStorage.swapMemory == 'si') {
-            swap.textContent = 'ID';
-            swapT.setAttribute('name','si');
-            swapL.textContent = 'Student ID No.';
-        } else if (localStorage.swapMemory == 'sc') {
-            swap.textContent = 'Code';
-            swapT.setAttribute('name','sc');
-            swapL.textContent = 'Student Code';
-        }
-
-        swap = document.querySelector('#swap2');
-        swapT = document.querySelector('#swaptarget2');
-        swapL = swapT.closest('i').querySelector('label');
-        if (localStorage.swapMemory == 'in') {
-            swap.textContent = 'Intake';
-            swapT.setAttribute('name','in');
-            swapL.textContent = 'Student Intake';
-        } else if (localStorage.swapMemory == 'sb') {
-            swap.textContent = 'Batch';
-            swapT.setAttribute('name','sb');
-            swapL.textContent = 'Student Batch';
+    for (let x = 0; x < swapVis.length; x++) {
+        if (swapVis[x].classList.contains('visible')) {
+            childNum = x;
+            swapVis[x].classList.remove('visible');
         }
     }
-    
-    getCodeMemory();
-} catch {}
+
+    if (childNum === (swapVis.length - 1)) {
+        swapVis[0].classList.add('visible');
+        localStorage.setItem(swapper.getAttribute('data-id'), swapVis[0].querySelector('input[type="text"]').getAttribute('name'));
+    } else {
+        swapVis[childNum + 1].classList.add('visible');
+        localStorage.setItem(swapper.getAttribute('data-id'), swapVis[childNum + 1].querySelector('input[type="text"]').getAttribute('name'));
+    }
+});
+
+function getCodeMemory() {
+    let swapVis = document.querySelectorAll('.swapper .visible'),
+        swapper = document.querySelectorAll('.swapper'),
+        swapCounter = 0;
+
+    for (let x = 0; x < swapVis.length; x++) {
+        swapVis[x].classList.add('og-visible');
+    }
+
+    for (let x = 0; x < swapper.length; x++) {
+        let localValue = localStorage.getItem(swapper[x].getAttribute('data-id')),
+            iTarget = '';
+        if (localValue !== null) {
+            iTarget = document.querySelector(`input[name="${localValue}"]`).closest('i');
+            iTarget.classList.add('visible');
+            iTarget.classList.remove('og-visible');
+        } else {
+            swapCounter++;
+        }
+    }
+
+    if (swapCounter === swapper.length) {return;}
+
+    let swapVisHas = document.querySelectorAll('.swapper:has(.og-visible)');
+
+    for (let x = 0; x < swapVisHas.length; x++) {
+        swapVisHas[x].querySelector('.og-visible').classList.remove('og-visible','visible');
+    }
+}
+
+getCodeMemory();
 
 function copyString(text,elem) {
     navigator.clipboard.writeText(text)
