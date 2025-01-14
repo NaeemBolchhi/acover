@@ -39,8 +39,7 @@ document.addEventListener('mouseup', (e) => {
 
 function getCodeMemory() {
     let swapVis = document.querySelectorAll('.swapper .visible'),
-        swapper = document.querySelectorAll('.swapper'),
-        swapCounter = 0;
+        swapper = document.querySelectorAll('.swapper');
 
     for (let x = 0; x < swapVis.length; x++) {
         swapVis[x].classList.add('og-visible');
@@ -53,14 +52,10 @@ function getCodeMemory() {
             iTarget = document.querySelector(`input[name="${localValue}"]`).closest('i');
             iTarget.classList.add('visible');
             iTarget.classList.remove('og-visible');
-        } else {
-            swapCounter++;
         }
     }
 
-    if (swapCounter === swapper.length) {return;}
-
-    let swapVisHas = document.querySelectorAll('.swapper:has(.og-visible)');
+    let swapVisHas = document.querySelectorAll('.swapper:has(.og-visible):has(.visible:not(.og-visible))');
 
     for (let x = 0; x < swapVisHas.length; x++) {
         swapVisHas[x].querySelector('.og-visible').classList.remove('og-visible','visible');
