@@ -7,8 +7,7 @@ Spend your time on what really matters, and leave the covers to this tool. Also 
 ## Features
 - Just input data, forget formatting.
 - Intended for university students.
-- Works on Android via Chrome and Chromium browsers.
-- Works on iOS via Safari.
+- Works on Android and iOS via Chrome and Chromium browsers.
 
 ## Instructions
 - Open ACover on a supported browser.
@@ -25,6 +24,7 @@ Spend your time on what really matters, and leave the covers to this tool. Also 
 
 ## Known Issue
 - On Android, Firefox and Gecko browsers don't work as intended.
+- On iOS, Safari doesn't work as intended.
 
 ## License
 This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
