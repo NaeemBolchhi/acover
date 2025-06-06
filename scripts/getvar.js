@@ -16,7 +16,7 @@ function fillGaps() {
     for (let x = 0; x < fields.length; x++) {
         if (typeof getVar(window.location.href)[fields[x].getAttribute('name')] !== 'undefined') {
             if (fields[x].tagName.match(/input/i)) {
-                fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ').replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
+                fields[x].value = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')].replace(/\+/g,'%20')).replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
                 if (fields[x].value !== '') {
                     fields[x].closest('i').classList.add('keepabove');
                 } else {
@@ -26,7 +26,7 @@ function fillGaps() {
                 if (getVar(window.location.href)[fields[x].getAttribute('name')] === '') {
                     fields[x].classList.add('none');
                 }
-                fields[x].textContent = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')]).replace(/\+/g,' ').replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
+                fields[x].textContent = decodeURIComponent(getVar(window.location.href)[fields[x].getAttribute('name')].replace(/\+/g,'%20')).replace(/\s+/g,' ').replace(/^\s/,'').replace(/\s$/,'');
             }
         } else {
             if (!fields[x].tagName.match(/input/i)) {
@@ -50,7 +50,14 @@ function swapVarVis() {
     }
 }
 
+function updateTitle() {
+    let sn = getVar(window.location.href).sn;
+
+    document.title = 'ACover - ' + decodeURIComponent(sn.replace(/\+/g,'%20'));
+}
+
 fillGaps();
+updateTitle();
 if (window.dataPage === 'home') {
     swapVarVis();
 }

@@ -27,7 +27,7 @@ html {
 body {
     color: black;
     fill: black;
-    background: white;
+    background: #181818;
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
@@ -39,6 +39,7 @@ body {
 content {
     height: 100%;
     width: 100%;
+    background: white;
     @media only screen {
         max-height: calc(100svw * 1.41428571428571);
         max-width: calc(100svh * 0.707070707070707);
@@ -151,16 +152,20 @@ content {
             display: none;
         }
     }
+    /* When Assignment Topic is Null */
+    &:has(> .outline > .none) span {
+        &[name="ah"], &[name="sn"] {
+            margin-top: 11.4rem;
+        }
+    }
 }
 
-#print {
+#print, #download {
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 2rem;
     right: 2rem;
-    background: #0ea5e9;
     color: #f8fafc;
     font-family: 'Cascadia Code', monospace;
     font-size: 1.2rem;
@@ -169,14 +174,27 @@ content {
     border-radius: 6px;
     cursor: pointer;
     box-shadow: inset 0 1px 0 0 #ffffff0d, 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    &:hover, &:focus {
-        background: #38bdf8;
-    }
     &:active {
         transform: translateY(3px);
     }
     @media print {
         display: none;
+    }
+}
+
+#print {
+    bottom: 9rem;
+    background: #0ea5e9;
+    &:hover, &:focus {
+        background: #38bdf8;
+    }
+}
+
+#download {
+    bottom: 2rem;
+    background: #eb550f;
+    &:hover, &:focus {
+        background: #ff6c10;
     }
 }
 
