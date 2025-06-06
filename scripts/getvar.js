@@ -57,7 +57,8 @@ function updateTitle() {
 }
 
 fillGaps();
-updateTitle();
 if (window.dataPage === 'home') {
     swapVarVis();
+} else {
+    updateTitle();
 }
