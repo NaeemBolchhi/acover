@@ -199,3 +199,15 @@ function downloadPDF() {
 document.querySelector('#download').addEventListener('click', () => {
     downloadPDF();
 });
+
+// Obtain Visible Page Size
+function visPageSize() {
+    let content = document.querySelector('body > content');
+
+    document.documentElement.setAttribute('style',`--vH:${content.offsetHeight}px;--vW:${content.offsetWidth}px`);
+}
+visPageSize();
+
+window.addEventListener('resize', () => {
+    visPageSize();
+});
