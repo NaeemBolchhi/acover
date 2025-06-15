@@ -37,7 +37,7 @@ function fillGaps() {
 
     // Ensuring Code/ID/Roll is filled
     try {
-        document.querySelector('input[name="si"],input[name="sc"],input[name="sr"]').value = getVar(window.location.href).si || getVar(window.location.href).sc || getVar(window.location.href).sr;
+        document.querySelector('input[name="si"],input[name="sc"],input[name="sr"]').value = getVar(window.location.href).si || getVar(window.location.href).sc || getVar(window.location.href).sr || "";
     } catch {}
 }
 
