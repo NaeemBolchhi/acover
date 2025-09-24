@@ -58,6 +58,17 @@ content {
         align-items: center;
         justify-content: center;
     }
+    div.c-title {
+        width: 80%;
+        > [name="cc"], > [name="cn"] {
+            display: none;
+        }
+        > [name="cc-cn"] {
+            display: unset;
+            font-weight: 700;
+            font-size: 2.4rem;
+        }
+    }
     div.outline {
         border: 1px solid #cccccc;//rgba(0,0,0,.2);
         border-radius: 6px;

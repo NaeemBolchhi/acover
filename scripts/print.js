@@ -55,7 +55,13 @@ function getRight(key, before, after) {
 function downloadPDF() {
     // Font Size Multiplier
     // Vertical centering needs to be manually adjusted if this is changed.
-    let fm = 9.04;
+    let fm = 9.04,
+        mt = 109;// margin-top
+
+    if (window.multiLineTitle === true) {
+        mt = 92;// double line
+    }
+
 
     // Values if no table is found
     let conditonalTable = {},
@@ -122,7 +128,7 @@ function downloadPDF() {
             height: 297/25.4*72
         },
         pageOrientation: 'portrait',
-        pageMargins: [0, 109, 0, 0],
+        pageMargins: [50, mt, 50, 0], // mt = 109 for single line
         defaultStyle: {
               font: 'PT_Serif',
               fontSize: fm*1.5,

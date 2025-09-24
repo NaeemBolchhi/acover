@@ -61,9 +61,38 @@ function updateTitle() {
     document.title = 'ACover - ' + decodeURIComponent(sn.replace(/\+/g,'%20'));
 }
 
+// Combine course code and title into one span for print
+function combineCCCN() {
+    let cTitle = document.querySelector('.c-title'),
+        cTemp = cTitle.children[0].textContent;
+
+    if (cTemp !== '') {
+        cTemp = cTemp + ': ';
+    }
+
+    cTitle.children[2].textContent = cTemp + cTitle.children[1].textContent;
+}
+
+// Check if title has line break
+function hasLineBreak() {
+    let cTitle = document.querySelector('.c-title');
+    window.multiLineTitle = false;
+
+    if (cTitle.children[2].offsetHeight > parseFloat(window.getComputedStyle(cTitle.children[2]).lineHeight) * 1.5) {
+        window.multiLineTitle = true;
+    }
+}
+
 fillGaps();
 if (window.dataPage === 'home') {
     swapVarVis();
 } else {
+    combineCCCN();
     updateTitle();
+}
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        hasLineBreak();
+    }
 }
