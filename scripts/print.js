@@ -10,7 +10,7 @@ document.querySelector('#print').addEventListener('click', () => {
 });
 
 document.querySelector('#return').addEventListener('click', () => {
-    window.location.assign(window.location.origin + '/' + window.location.search);
+    window.location.assign(window.location.origin + '/acover/' + window.location.search);
 });
 
 function hideBlankCodeIDRoll() {
