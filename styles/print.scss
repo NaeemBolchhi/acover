@@ -175,7 +175,7 @@ content {
     }
 }
 
-#print, #download {
+#print, #download, #return {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,6 +210,17 @@ content {
     background: #eb550f;
     &:hover, &:focus {
         background: #ff6c10;
+    }
+}
+
+#return {
+    top: calc(2 * 12px);
+    left: calc(2 * 12px);
+    right: unset;
+    aspect-ratio: 1/1;
+    background: #666666;
+    &:hover, &:focus {
+        background: #777777;
     }
 }
 

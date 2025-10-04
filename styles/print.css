@@ -163,7 +163,7 @@ content:has(> .outline > .none) span[name=ah], content:has(> .outline > .none) s
   margin-top: 11.4rem;
 }
 
-#print, #download {
+#print, #download, #return {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,11 +178,11 @@ content:has(> .outline > .none) span[name=ah], content:has(> .outline > .none) s
   cursor: pointer;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#print:active, #download:active {
+#print:active, #download:active, #return:active {
   transform: translateY(3px);
 }
 @media print {
-  #print, #download {
+  #print, #download, #return {
     display: none;
   }
 }
@@ -201,6 +201,17 @@ content:has(> .outline > .none) span[name=ah], content:has(> .outline > .none) s
 }
 #download:hover, #download:focus {
   background: #ff6c10;
+}
+
+#return {
+  top: 24px;
+  left: 24px;
+  right: unset;
+  aspect-ratio: 1/1;
+  background: #666666;
+}
+#return:hover, #return:focus {
+  background: #777777;
 }
 
 .none {

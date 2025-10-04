@@ -9,6 +9,10 @@ document.querySelector('#print').addEventListener('click', () => {
     window.print();
 });
 
+document.querySelector('#return').addEventListener('click', () => {
+    window.location.assign(window.location.origin + '/' + window.location.search);
+});
+
 function hideBlankCodeIDRoll() {
     if (typeof getVar(window.location.href).sc == 'undefined') {
         document.querySelector('span[name="sc"]').classList.add('none');
