@@ -1,6 +1,7 @@
 pages:
   stage: deploy
   script:
+    - find . -name "*.html" -exec sed -i 's|acover.vercel.app|naeembolchhi.gitlab.io/acover|g' {} +
     - mkdir .public
     - cp -r * .public
     - mv .public public
