@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace URLs in HTML files
-        run: find . -name "*.html" -exec sed -i 's|acover.vercel.app|naeembolchhi.gitlab.io/acover|g' {} +
+        run: find . -name "*.html" -exec sed -i 's|acover.vercel.app|naeembolchhi.github.io/acover|g' {} +
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
