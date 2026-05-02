@@ -17,8 +17,8 @@ html {
 }
 
 html {
-  --serif: "PT Serif", "Times New Roman", serif;
-  --mono: "Cascadia Code", monospace;
+  --serif: 'PT Serif', 'Times New Roman', serif;
+  --mono: 'Cascadia Code', monospace;
   --font-scale: 80;
   font-family: var(--serif);
   font-size: 12px;
@@ -45,18 +45,19 @@ content {
   height: 100%;
   width: 100%;
   background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.6rem;
-  /* When Assignment Topic is Null */
 }
 @media only screen {
   content {
     max-height: 141.4285714286svw;
     max-width: 70.7070707071svh;
   }
+}
+content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 content div {
   display: flex;
@@ -89,8 +90,6 @@ content div.outline:has(.none) {
 }
 content span {
   text-align: center;
-  /* Margins */
-  /* Display */
 }
 content span[name=cc], content span[name=cn], content span[name=ah] {
   font-weight: 700;
@@ -150,14 +149,23 @@ content span[name=sd]::before {
   content: "Date of Submission:";
   padding-right: 0.5rem;
 }
+content span {
+  /* Margins */
+}
 content span[name=ah], content span[name=sn] {
   margin-top: 8rem;
 }
 content span[name=sd] {
   margin: 5rem 0;
 }
+content span {
+  /* Display */
+}
 content span.none {
   display: none;
+}
+content {
+  /* When Assignment Topic is Null */
 }
 content:has(> .outline > .none) span[name=ah], content:has(> .outline > .none) span[name=sn] {
   margin-top: 11.4rem;

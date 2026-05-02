@@ -4,6 +4,12 @@ ACover lets you print (or save to PDF) cover pages for school, college, or unive
 
 Spend your time on what really matters, and leave the covers to this tool. Also works on Android/iOS, so you can make cover page PDFs without even owning a computer.
 
+[![ACover on Vercel](https://img.shields.io/badge/WebApp-acover.vercel.app-0ea5e9?style=for-the-badge&logo=vercel)](https://acover.vercel.app/)
+
+[![ACover on GitLab Pages](https://img.shields.io/badge/Mirror-naeembolchhi.gitlab.io/acover-0ea5e9?style=for-the-badge&logo=gitlab)](https://naeembolchhi.gitlab.io/acover/)
+
+[![ACover on GitHub Pages](https://img.shields.io/badge/Mirror-naeembolchhi.gitlab.io/acover-0ea5e9?style=for-the-badge&logo=github)](https://naeembolchhi.github.io/acover/)
+
 ## Features
 - Just input data, forget formatting.
 - Intended for university students.
@@ -40,6 +46,3 @@ This project is licensed under the [GNU Affero General Public License v3.0](http
 
 ## Attribution
 The logo for the project is sourced from [Flaticon](https://www.flaticon.com/free-icon/letter-a_14108959).
-
-## WebApp Link
-- [GitHub Pages](https://naeembolchhi.github.io/acover/)
