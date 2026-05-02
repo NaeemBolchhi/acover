@@ -19,12 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace URLs in HTML files
-        run: |
-          OLD_URL="acover.vercel.app"
-          NEW_URL="naeembolchhi.github.io/acover"
-
-          # Find all HTML files and replace text
-          find . -type f -name "*.html" -exec sed -i "s|$OLD_URL|$NEW_URL|g" {} +
+        run: find . -name "*.html" -exec sed -i 's|acover.vercel.app|naeembolchhi.gitlab.io/acover|g' {} +
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
