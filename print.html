@@ -26,8 +26,8 @@
     <link rel="stylesheet" type="text/css" href="styles/fontasm.min.css">
     <link rel="stylesheet" type="text/css" href="styles/ptserif.min.css">
     <link rel="stylesheet" type="text/css" href="styles/cascadiacode.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="styles/main.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="styles/print.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/print.min.css">
 
     <meta property="og:site_name" content="ACover">
     <meta property="og:title" content="ACover">
@@ -44,14 +44,8 @@
     <meta name="twitter:image" content="https://acover.vercel.app/app/twitter.png?20241122211704">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- <script type="text/javascript" src="lib/pdfmake.min.js"></script> -->
-    <!-- <script type="text/javascript" src="lib/vfs_fonts.min.js"></script> -->
-    <script type="text/javascript">
-        window.PagedConfig = {
-            auto: false // Disables automatic full-body polyfilling
-        };
-    </script>
-    <script type="text/javascript" src="lib/paged.js"></script>
+    <script type="text/javascript" src="lib/pdfmake.min.js"></script>
+    <script type="text/javascript" src="lib/vfs_fonts.min.js"></script>
 </head>
 <body>
     <content>
@@ -87,23 +81,5 @@
     <span class="no-select" id="download">Download as PDF</span>
     <script type="text/javascript" src="scripts/getvar.min.js"></script>
     <script type="text/javascript" src="scripts/print.min.js"></script>
-    <script type="text/javascript">
-        // Wait for the DOM and external variables to load completely
-        window.addEventListener('DOMContentLoaded', async () => {
-            const contentElement = document.querySelector('content');
-            
-            if (contentElement && window.Paged) {
-                let pagedPreviewer = new window.Paged.Previewer();
-                
-                // Pass the element, your stylesheets, and render target
-                await pagedPreviewer.preview(
-                    contentElement, 
-                    ['styles/print.min.css'], 
-                    document.body
-                );
-                console.log("Paged.js layout activated on <content>");
-            }
-        });
-    </script>
 </body>
 </html>
